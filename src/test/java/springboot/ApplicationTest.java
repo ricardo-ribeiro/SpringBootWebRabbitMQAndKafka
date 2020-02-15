@@ -46,7 +46,6 @@ public class ApplicationTest {
             assertEquals(PRICE,prod.getPrice());
         });
 
-        assertEquals(numberOfProducts,products.size());
     }
 
 
