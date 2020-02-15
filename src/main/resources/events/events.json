@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1234567891234567890",
+    "eventType": "COMPANY-REGISTRATION",
+    "schema": {},
+    "data": {
+
+    }
+  },
+  {
+    "id": "12345691234567890",
+    "eventType": "type",
+    "schema": {},
+    "data": {}
+  }
+]
