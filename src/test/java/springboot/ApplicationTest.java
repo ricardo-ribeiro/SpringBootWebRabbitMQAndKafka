@@ -28,7 +28,7 @@ public class ApplicationTest {
     @Test
     public void shouldCreate10Products(){
         int numberOfProducts = 10;
-        for (int i = 1; i < numberOfProducts; i++) {
+        for (int i = 1; i <= numberOfProducts; i++) {
             Product testProduct = new Product();
             testProduct.setCategory(CATEGORIES);
             testProduct.setDescription(DESCRIPTION);
