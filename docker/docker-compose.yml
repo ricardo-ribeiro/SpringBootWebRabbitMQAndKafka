@@ -41,3 +41,25 @@ services:
       - ./zookeeperAndKafka/kafka1/data:/var/lib/kafka/data
     depends_on:
       - zoo1
+  mariadb:
+    image: wodby/mariadb
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: ExampleDatabase
+    ports:
+      - "3306:3306"
+  adminer:
+    image: adminer
+    depends_on:
+      - mariadb
+    environment:
+      ADMINER_DEFAULT_DB_DRIVER: mysql
+      ADMINER_DEFAULT_DB_HOST: mariadb
+      ADMINER_DEFAULT_DB_NAME: adminer
+      ADMINER_DESIGN: nette
+      ADMINER_PLUGINS: tables-filter tinymce
+    ports:
+      - "9999:8080"
