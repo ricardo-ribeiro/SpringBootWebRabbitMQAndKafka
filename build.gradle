@@ -39,10 +39,10 @@ dependencies {
      */
     // Enable Spring Data with H2 in mem db
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    /**
-     * Adding H2 In Memory Database For Development
-     */
-    runtime 'com.h2database:h2'
+
+    compile 'org.mariadb.jdbc:mariadb-java-client:2.3.0'
+
+
 
 
     /**
@@ -58,9 +58,15 @@ dependencies {
      * Adding Kafka Cloud Stream Support
      */
     implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka'
-    
+
+    /**
+     * Adding H2 In Memory Database For Development
+     */
+    testRuntime 'com.h2database:h2'
+
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.kafka:spring-kafka-test')
 
     // Spring Cloud Streams Test
     testCompile 'org.springframework.cloud:spring-cloud-stream-test-support'

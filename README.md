@@ -3,12 +3,32 @@
 ![Java CI](https://github.com/ricardo-ribeiro/SpringBootWebRabbitMQAndKafka/workflows/Java%20CI/badge.svg)
 
 
+
+
+
 # Running Docker Services
 
 ```bash
 cd docker
 docker-compose up
 ```
+
+# Docker Services
+
+
+## [ADMINER](localhost:9999)
+
+Web Application MYSQL/MariaDB database explorer.
+Allows you to run queries and manage your database.
+
+![Adminer Image](../master/docs/adminer/Adminer.png)
+
+
+## [RabbitMQ Management Console](localhost:15672)
+
+RabbitMQ Management Console
+
+
 
 # Running the Application
 ```bash
