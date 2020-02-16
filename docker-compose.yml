@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  springboot-docker-compose-app-container:
+    image: springboot-Example-app:0.0.1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./.data:/data/ExampleApplication
+    ports:
+      - "3333:5757"
