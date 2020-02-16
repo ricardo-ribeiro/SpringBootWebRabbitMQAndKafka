@@ -4,6 +4,12 @@ server:
 logging.level.root: INFO
 
 spring:
+  security:
+    xtype: BASIC
+    user:
+      name: root
+      password: root
+
   datasource:
     url: jdbc:h2:mem:testdb
     username: root

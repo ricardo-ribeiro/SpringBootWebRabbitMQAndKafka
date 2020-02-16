@@ -29,6 +29,8 @@ dependencyManagement {
 
 dependencies {
 
+    runtime 'org.springframework.boot:spring-boot-devtools'
+
     /**
      * Adding Spring Boot Starter For Web Application
      */
@@ -41,10 +43,17 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'org.mariadb.jdbc:mariadb-java-client:2.3.0'
 
-
+    /**
+     * Adding Spring Boot Actuator - Registers Endpoints
+     *
+     */
     compile("org.springframework.boot:spring-boot-starter-actuator")
+    /**
+     * Adding Spring Boot Security
+     */
+    compile("org.springframework.boot:spring-boot-starter-security")
 
-
+    compile 'io.jsonwebtoken:jjwt:0.9.1'
 
     /**
      * Requires Cloud Stream Dependency Management
@@ -75,6 +84,28 @@ dependencies {
 }
 
 
-task react{
+task react(type:Exec){
+    workingDir './ui'
+    executable "sh"
+    args "-c", "npm run build"
+}
+
+task Generate_JWT_Security_Key_Pair(type:Exec){
+    workingDir './'
+    executable "sh"
+    args "-c", "echo" +
+            " '\n############## ROTATING JWT SECURITY KEY PAIR ###############\n' " +
+            "&& " +
+            "source ./scripts/utils.sh " +
+            "&& " +
+            "generateJWTKeyPair"
 
 }
+
+/**
+ * Assemble Process Build The React Application to the src/resources/public
+ * Generate JWT Token Key Pair In Use when spring.security.xtype: JWT
+ * Not needed when using with BASIC
+ */
+assemble.dependsOn(react)
+assemble.dependsOn(Generate_JWT_Security_Key_Pair)

@@ -73,16 +73,71 @@ Password: guest
 
 ```yml
 server:
-  port: 5757
+  port: 5757 // Set the Server Port
 
-logging.level.root: INFO
+logging.level.root: INFO // Set the root Logging Level ex.: INFO | DEBUG | TRACE
+logging.level.<classpath>.<name>: INFO // INFO | DEBUG ...
+
+# Use When Having Spring Actuator, Expose All Endpoints {Security Concerns}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # Expose All The Actuator Endpoints
+
+# When Using spring.security.xtype: JWT ; You Can Customise The token Generation
+# key paths and other details.
+custom:
+  security:
+    masterUser:
+      username: master@localhost.com
+      password: root
+      roles:
+        - MASTER
+        - DEVELOPER
+        - CUSTOMER
+    jwt:
+      header:
+        key: Authorization
+        value:
+          prefix: Bearer
+      algorithm : RSA512
+      token:
+        aliveFor: 3600
+        issuer: ExampleApplication@localhost
+        audience:
+          - banana
+          - banana1
+          - banana2
+        scope:
+          - ui
+      keys:
+        public:
+          path: /banana
+        private:
+          path: /banana
+
 
 spring:
+  # Spring Security Details
+  security:
+    xtype: BASIC # custom: BASIC or JWT
+    user:
+      name: root
+      password: root
+  # Spring Data Default Data Source - MariaDB
+  datasource:
+    url: jdbc:mariadb://localhost:3306/ExampleDatabase
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
+    validationQuery: SELECT 1
   application:
     name: ExampleApp
   h2:
     console:
       enabled: true
+  # Spring Cloud Streams Binder and Bindings Details
   cloud:
     stream:
       defaultBinder: rabbit
@@ -114,6 +169,7 @@ spring:
               binder:
                 brokers: localhost
                 defaultBrokerPort: 9092
+              # Specific Internal Kafka Consumer and Producer Properties per Binding
               bindings:
                 globalEventsOutput:
                   producer:
@@ -130,6 +186,7 @@ spring:
               cloud:
                 stream:
                   rabbit:
+                    # Specific Internal RabbitMQ Consumer and Producer Properties per Binding
                     bindings:
                       paymentsReceived:
                         consumer:
@@ -147,4 +204,33 @@ spring:
                 password: guest
 ```
 
+
+
+
+# In This Repository
+
+## A Example React Application
+
+#### Start React Development Server
+```bash
+cd ui 
+npm install
+npm start
+```
+[GO TO UI ON DEVELOPMENT SERVER](http://localhost:3000)
+
+[GO TO BUILT_UI ON SPRING BOOT SERVER](http://localhost:5757)
+
+Proxyed Requests : htto://localhost:3000 : http://localhost:5757
+
+
+## A Kafka Spring Cloud Binder 
+## A Kafka Spring Cloud Binder 
+### With a Consumer
+### With a Producer
+
+
+## A RabbitMQ Spring Cloud Binder 
+### With a Consumer
+### With a Producer
 

@@ -54,7 +54,7 @@ function App() {
         </div>
         <div className="App-Actuator-Mappings">
             <h2>App Mappings</h2>
-            {mappings.map(mapping=><><WebMapping {...mapping}/><br/></>)}
+            {mappings.filter(m=>m.details != null).map(mapping=><><WebMapping {...mapping}/><br/></>)}
         </div>
       </div>
     </div>

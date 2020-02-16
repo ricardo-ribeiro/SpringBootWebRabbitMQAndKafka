@@ -71,6 +71,7 @@ public class ProductsControllerTest {
         mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/product")
+                        .header("Authorization","Basic cm9vdDpyb290")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(createProductDTO())))
                 .andDo(
@@ -94,7 +95,7 @@ public class ProductsControllerTest {
     @Test
     public void getProducts_OK() throws Exception {
         mockMvc
-                .perform(MockMvcRequestBuilders.get("/products"))
+                .perform(MockMvcRequestBuilders.get("/products").header("Authorization","Basic cm9vdDpyb290"))
                 .andDo(
                         print()
                 )
@@ -118,7 +119,7 @@ public class ProductsControllerTest {
     public void getProduct_1234_NOT_FOUND() throws Exception {
         given(productsService.findById(any())).willReturn(Optional.ofNullable(null));
         mockMvc
-                .perform(MockMvcRequestBuilders.get("/products/1234"))
+                .perform(MockMvcRequestBuilders.get("/products/1234").header("Authorization","Basic cm9vdDpyb290"))
                 .andDo(
                         print()
                 )
@@ -140,7 +141,7 @@ public class ProductsControllerTest {
     @Test
     public void getProduct_1_OK() throws Exception {
         mockMvc
-                .perform(MockMvcRequestBuilders.get("/products/1"))
+                .perform(MockMvcRequestBuilders.get("/products/1").header("Authorization","Basic cm9vdDpyb290"))
                 .andDo(
                         print()
                 )
