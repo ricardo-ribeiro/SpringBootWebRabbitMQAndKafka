@@ -7,14 +7,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.Bean;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import springboot.messaging.KafkaEventChannels;
 import springboot.messaging.PaymentMessagingChannel;
 import springboot.services.InvoicingService;
 
 @SpringBootApplication
 @EnableBinding({PaymentMessagingChannel.class, KafkaEventChannels.class})
-//@EnableWebMvc
 public class Application {
+
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @Bean
     CommandLineRunner commandLineRunner(
@@ -22,6 +26,15 @@ public class Application {
             @Autowired ObjectMapper objectMapper
     ){
         return args -> {
+
+            SimpleMailMessage msg = new SimpleMailMessage();
+            msg.setFrom("ExampleApplication@example.com");
+            msg.setTo("to_1@gmail.com", "to_2@gmail.com", "to_3@yahoo.com");
+
+            msg.setSubject("Testing from Spring Boot");
+            msg.setText("Hello World \n Spring Boot Email");
+
+            javaMailSender.send(msg);
 //
 //            /**
 //             * Creating a Invoice

@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.junit4.SpringRunner;
 import springboot.dtos.ProductDTO;
 import springboot.entities.Product;
@@ -21,6 +23,8 @@ import static springboot.entities.ProductTest.*;
 @RunWith(SpringRunner.class)
 public class ApplicationTest {
 
+    @MockBean
+    JavaMailSender javaMailSender;
 
     @Autowired
     private ProductsRepository productsRepository;

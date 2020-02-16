@@ -53,7 +53,15 @@ dependencies {
      */
     compile("org.springframework.boot:spring-boot-starter-security")
 
+
     compile 'io.jsonwebtoken:jjwt:0.9.1'
+
+
+    /**
+     * Adding SMTP Mail Sending Capabilities
+     */
+    compile 'org.springframework.boot:spring-boot-starter-mail'
+
 
     /**
      * Requires Cloud Stream Dependency Management

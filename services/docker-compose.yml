@@ -63,3 +63,8 @@ services:
       ADMINER_PLUGINS: tables-filter tinymce
     ports:
       - "9999:8080"
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025 # smtp server
+      - 9998:8025 # web ui

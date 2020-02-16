@@ -38,8 +38,19 @@ custom:
         private:
           path: /banana
 
-
 spring:
+  mail:
+    host: localhost
+    port: 1025
+    username:
+    password:
+    properties:
+      mail:
+        smtp:
+          auth: false
+          connectiontimeout: 5000
+          timeout: timeout
+          writetimeout: 5000
   security:
     xtype: BASIC
     user:
