@@ -1,4 +1,9 @@
 .gradle/
 .idea/
 build/
-docker/zookeeperAndKafka
+.data/
+services/zookeeperAndKafka
+
+ui/node_modules
+
+node_modules
