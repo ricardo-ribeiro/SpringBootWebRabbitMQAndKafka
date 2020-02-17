@@ -4,14 +4,48 @@
 
 
 
+!!  WIP  !!
 
+# In This Repository
 
-# Running Docker Services
+## A Example Spring Boot Application
 
+## A Example React Application
+
+## Dockerized Services
+
+#### Start React Development Server
 ```bash
-cd docker
-docker-compose up
+cd ui 
+npm install
+npm start
 ```
+[GO TO UI ON DEVELOPMENT SERVER](http://localhost:3000)
+
+[GO TO BUILT_UI ON SPRING BOOT SERVER](http://localhost:5757)
+
+Proxyed Requests : htto://localhost:3000 : http://localhost:5757
+
+
+## MariaDB DataSource - Spring Data
+
+## A Kafka Spring Cloud Binder 
+### With a Consumer
+### With a Producer
+
+## A RabbitMQ Spring Cloud Binder 
+### With a Consumer
+### With a Producer
+
+# A REST Api
+
+# With Spring Security
+## Basic
+## JWT
+
+
+
+
 
 # Docker Services
 
@@ -41,6 +75,10 @@ Database: Empty OR ExampleDatabase
 
 RabbitMQ Management Console
 
+
+RabbitMQ is an open-source message-broker software (sometimes called message-oriented middleware) that originally implemented the Advanced Message Queuing Protocol (AMQP) and has since been extended with a plug-in architecture to support Streaming ...
+(Wikipedia)
+
 ```
 Host: http://localhost:15672
 Username: guest
@@ -58,6 +96,15 @@ Password: guest
 ## RabbitMQ
 ## Kafka
 ## Zookeeper
+
+
+# Running Docker Services
+
+```bash
+cd docker
+docker-compose up
+```
+
 
 # Running the Application
 ```bash
@@ -207,30 +254,5 @@ spring:
 
 
 
-# In This Repository
 
-## A Example React Application
-
-#### Start React Development Server
-```bash
-cd ui 
-npm install
-npm start
-```
-[GO TO UI ON DEVELOPMENT SERVER](http://localhost:3000)
-
-[GO TO BUILT_UI ON SPRING BOOT SERVER](http://localhost:5757)
-
-Proxyed Requests : htto://localhost:3000 : http://localhost:5757
-
-
-## A Kafka Spring Cloud Binder 
-## A Kafka Spring Cloud Binder 
-### With a Consumer
-### With a Producer
-
-
-## A RabbitMQ Spring Cloud Binder 
-### With a Consumer
-### With a Producer
 
